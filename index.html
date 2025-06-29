@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LeafCraft Server Creator</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #1f1f1f, #2a2a2a);
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.5em;
+      color: #7bed9f;
+    }
+    input[type="text"] {
+      padding: 10px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      width: 300px;
+      margin-top: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 8px;
+      margin-top: 10px;
+      background-color: #7bed9f;
+      color: #1f1f1f;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background-color: #57d78b;
+    }
+    .output {
+      margin-top: 30px;
+      font-size: 1.5em;
+      color: #aaa;
+    }
+    .server-ip {
+      color: #7bed9f;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>LeafCraft - Create Your Server</h1>
+  <input type="text" id="serverName" placeholder="Enter server name...">
+  <br>
+  <button onclick="createServer()">Create Server</button>
+  <div class="output" id="output"></div>
+
+  <script>
+    function createServer() {
+      const name = document.getElementById('serverName').value.trim();
+      const output = document.getElementById('output');
+
+      if (name === '') {
+        output.innerHTML = '❌ Please enter a server name.';
+        return;
+      }
+
+      const cleanName = name.replace(/[^a-zA-Z0-9\\-]/g, '').toLowerCase();
+      output.innerHTML = `✅ Your server is ready at: <span class="server-ip">${cleanName}.leafcraft.com</span>`;
+    }
+  </script>
+</body>
+</html>
